@@ -1,10 +1,10 @@
-baseURL: /
+baseURL: https://sarah-wu-portfolio.netlify.app/
 languageCode: en-us
 title: Personal Site for Sarah Wu
 theme: forty
 googleAnalytics: ''
 disqusShortname: ''
-params:zz
+params:
   banner:
     buttonText: Get Started
     #subtitle: |-
