@@ -1,14 +1,14 @@
 ---
-categories:
-- ""
-- ""
-date: "2017-10-31T21:28:43-05:00"
-description: ""
-draft: false
+title: "My Interests"
+date: '2017-10-31T21:28:43-05:00'
+description: ''
+draft: no
 image: pic10.jpg
-keywords: ""
+keywords: ''
 slug: interest
-title: My Interests
+categories:
+- ''
+- ''
 ---
 
 In my free time, I like watching films and thinking over the plots and meanings they conveyed. I am especially interested in Japanese films, particularly those by Hirokazu Koreeda, for their special aesthetic values and thought-provoking stories. I joined the film club on campus and went to weekly screenings to watch the selected films. I also enjoyed sharing my thoughts and feelings with other club members to foster insightful discussions within the community. 
