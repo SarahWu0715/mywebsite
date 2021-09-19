@@ -6,4 +6,4 @@ slug: blogs
 title: Lifestyle
 ---
 
-My blogs about technology and lifestyle.
+My blogs about my past experiences and interests in both career and life.
