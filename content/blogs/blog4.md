@@ -3,15 +3,12 @@ categories:
 - ""
 - ""
 date: "2017-10-31T22:42:51-05:00"
-description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna
-  sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa
-  sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem
-  consequat tincidunt. Vivamus et sagittis tempus.
+description: Pre-course assignment for MAM program that demonstrates my ability in drafting markdowns and creating data visualizations
 draft: false
 image: pic07.jpg
 keywords: ""
 slug: aliquam
-title: Aliquam
+title: Aliqua
 ---
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
