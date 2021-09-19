@@ -3,12 +3,12 @@ categories:
 - ""
 - ""
 date: "2017-10-31T22:42:51-05:00"
-description: Pre-course assignment for MAM program that demonstrates my ability in drafting markdowns and creating data visualizations
+description: 
 draft: false
 image: pic07.jpg
 keywords: ""
-slug: aliquam
-title: Aliqua
+slug: bio
+title: My Biography
 ---
 
 # Biography of Sarah Wu
