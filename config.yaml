@@ -92,16 +92,28 @@ params:
         url: blogs/SarahWu_resume_revised.pdf/
       - image: pic03.jpg
         subtitle: Click to view my work
-        title: Analytical Work
+        title: Analytical Work 1
         url: blogs/hw0/
       - image: pic03.jpg
+        subtitle: Click to view my work
+        title: Analytical Work 2
+        url: blogs/hw1/
+      - image: pic03.jpg
+        subtitle: Click to view my work
+        title: Analytical Work 3
+        url: blogs/hw3/
+      - image: pic09.jpg
         subtitle: Click to others' impression on me
         title: Recommendation
         url: blogs/recom/
       - image: pic04.jpg
         subtitle: Click to see my life and interests
-        title: Life & Interests
+        title: Interests
         url: blogs/interest/
+      - image: pr.jpg
+        subtitle: Click to see my travel log
+        title: Life
+        url: blogs/travel.html
   two:
     buttonText: Learn More About Me
     enable: yes
