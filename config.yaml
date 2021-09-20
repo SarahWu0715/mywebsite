@@ -89,10 +89,14 @@ params:
       - image: pic02.jpg
         subtitle: Click to see my competencies
         title: Professional Experiences
-        url: blogs/hw0/
+        url: blogs/SarahWu_resume_revised.pdf/
       - image: pic03.jpg
         subtitle: Click to view my works
         title: Analytical Works
+        url: blogs/hw0/
+      - image: pic03.jpg
+        subtitle: Click to others' impression on me
+        title: Recommendation
         url: blogs/recom/
       - image: pic04.jpg
         subtitle: Click to see my passion for movies and dance

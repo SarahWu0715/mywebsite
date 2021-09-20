@@ -7,8 +7,8 @@ description:
 draft: false
 image: pic08.jpg
 keywords: ""
-slug: ps
-title: Personal Statement
+slug: about_me
+title: About Me
 ---
 
 My name is Danyang (Sarah) Wu, and I am a Masters in Analytics and Management student at London Business School, expected to graduate in June 2022. 
