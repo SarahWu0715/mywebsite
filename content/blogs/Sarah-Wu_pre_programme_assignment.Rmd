@@ -157,7 +157,7 @@ Answer: In general, life expectancy in each continent has been increasing after 
 We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data
 
 ```{r load_brexit_data, warning=FALSE, message=FALSE}
-brexit_results <- read_csv(here::here("data","brexit_results.csv"))
+brexit_results <- read_csv(here::here("brexit_results.csv"))
 
 
 glimpse(brexit_results)
