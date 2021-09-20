@@ -674,7 +674,6 @@ new_every_us_county_2 <-
 # filter(new_every_us_county, complete_rate_max > 0 )
 # new_every_us_county %>% 
 skim(new_every_us_county)
-Trump_Vote_all
 rects <- data.frame(xstart = seq(0,45,45), xend = seq(55,100,45),col = letters[2:1])
 library(ggplot2)
 library(ggpmisc)
@@ -693,14 +692,6 @@ ggplot()+
   coord_fixed(ratio=1.3)
 
 ggsave("plot.png")
-
-
-
-# #Fake data 
-# dat <- data.frame(x = 1:100, y = cumsum(rnorm(100))) 
-# #Breaks for background rectangles 
-# rects <- data.frame(xstart = seq(0,80,20), xend = seq(20,100,20), col = letters[1:5]) #As Baptiste points out, the order of the geom's matters, so putting your data as last will #make sure that it is plotted "on top" of the background rectangles. Updated code, but #did not update the JPEG...I think you'll get the point. 
-# ggplot() + geom_rect(data = rects, aes(xmin = xstart, xmax = xend, ymin = 0, ymax = 100, fill = col), alpha = 0.4) + geom_line(data = dat, aes(x,y)) 
 ```
 
 # Challenge 2: Opinion polls for the 2021 German elections
