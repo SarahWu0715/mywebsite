@@ -20,3 +20,5 @@ Having explored various companies in marketing consultancy, internet industry, a
 The senior exposure that I had when working directly with the management of clients at Deloitte and delivering industry analysis directly to the CEO of product was also precious and fulfilling. The sense of achievement when I see my all-nighters are transformed into my employer or clients’ business success and see their products indeed benefit thousands of people was also unparalleled. 
 
 Therefore, I am certain that a career in business analytics and consulting is what I like and want to devote to.
+
+Please go to my blogs to see my past experiences,analytical works, and life & interests!

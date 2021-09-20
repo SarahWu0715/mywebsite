@@ -87,19 +87,19 @@ params:
         title: About Me
         url: blogs/about_me/
       - image: pic02.jpg
-        subtitle: Click to see my competencies
-        title: Professional Experiences
+        subtitle: Click to see my experiences
+        title: My Resume
         url: blogs/SarahWu_resume_revised.pdf/
       - image: pic03.jpg
-        subtitle: Click to view my works
-        title: Analytical Works
+        subtitle: Click to view my work
+        title: Analytical Work
         url: blogs/hw0/
       - image: pic03.jpg
         subtitle: Click to others' impression on me
         title: Recommendation
         url: blogs/recom/
       - image: pic04.jpg
-        subtitle: Click to see my passion for movies and dance
+        subtitle: Click to see my life and interests
         title: Life & Interests
         url: blogs/interest/
   two:
