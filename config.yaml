@@ -88,7 +88,7 @@ params:
       - image: pic02.jpg
         subtitle: Click to see my competencies
         title: Professional Experiences
-        url: blogs/hw0/
+        url: blogs/hw0
       - image: pic03.jpg
         subtitle: Click to view my works
         title: Analytical Works
