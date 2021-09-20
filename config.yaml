@@ -85,7 +85,7 @@ params:
       - image: pic01.jpg
         subtitle: Click to learn about who I am
         title: About Me
-        url: blogs/bio/
+        url: blogs/about_me/
       - image: pic02.jpg
         subtitle: Click to see my competencies
         title: Professional Experiences
