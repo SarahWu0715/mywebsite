@@ -5,7 +5,7 @@ categories:
 date: "2017-10-31T22:42:51-05:00"
 description: 
 draft: false
-image: pic07.jpg
+image: pic03.jpg
 keywords: ""
 slug: hw3
 title: Homework 3
@@ -437,12 +437,8 @@ Using your data manipulation and visualisation skills, please use the Brexit res
 
 ```{r brexit_challenge, echo=FALSE, out.width="100%"}
 knitr::include_graphics(here::here("images", "brexit.png"), error = FALSE)
-directory <- getwd()
-directory
-myfile = "brexit_results.csv"
-filepath=paste0(directory,"/",myfile[1],sep="")
-filepath
-data_brex_results <- read_csv(filepath)
+
+data_brex_results <- read_csv(here::here("data","brexit_results.csv"))
 
 skim(data_brex_results)
 
@@ -473,180 +469,6 @@ brex_results_long %>%
 theme(legend.position="bottom")
 ggsave("brexresultslong.jpg")
 # 
-
-```
-
-# Challenge 2: CDC COVID-19 Public Use Data
-
-The [CDC Covid-19 Case Surveillance Data](https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data/vbim-akqf) is a case surveillance public use dataset with 12 elements for all COVID-19 cases shared with CDC and includes demographics, any exposure history, disease severity indicators and outcomes, presence of any underlying medical conditions and risk behaviors. You can see the variables from 
-
-
-```{r covid_data, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "cdc_data.png"), error = FALSE)
-```
-
-
-There are well over 28 million entries of individual, and we will work with SQLlite database, rather than a CSV file. Let's produce two graphs that show death % rate:
-
-1. by age group, sex, and whether the patient had co-morbidities or not
-2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
-
-
-```{r covid_challenge, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "covid_death_rate_comorbidities.png"), error = FALSE)
-knitr::include_graphics(here::here("images", "covid_death_rate_icu.png"), error = FALSE)
-```
-
-To do this, you will have to think what dplyr verbs to use to select, filter, group_by, etc. You will then use the example shown in https://mam2022.netlify.app/reference/reference_sql/#establish-a-connection-with-the-sqlite-database-1 to use dplyr, dbplyr, and ggplot to produce these graphs.
-
-1. by age group, sex, and whether the patient had co-morbidities or not
-
-```{r}
-library(tidyverse)
-library(RSQLite)
-library(dbplyr)
-library(DBI)
-library(janitor)
-
-# set up a connection to sqlite database
-
-cdc_db <- DBI::dbConnect(
-  drv = RSQLite::SQLite(),
-  dbname = "cdc_data.db"
-)
-
-# browse the tables in the database
-DBI::dbListTables(cdc_db)
-
-# Set these tables up as database
-cdc_data <- dplyr::tbl(cdc_db, "cdc")
-
-cdc_data
-
-# Calculate Covid death % by age group, sex 
-# and presence of co-morbidities (query1) 
-query1 <-   cdc_data %>%
-  filter(current_status == "Laboratory-confirmed case")%>%
-  arrange(death_yn) %>%
-  select(!onset_dt) %>%
-  select(!pos_spec_dt) %>%
-  # Create the features needed
-  mutate(medcond_yn = case_when(medcond_yn == "Missing" ~ as.character("Unknown"), TRUE ~ medcond_yn),
-         age_group = case_when(age_group == "NA" ~ as.character("Missing"), TRUE ~ age_group),
-         sex = case_when(sex == "NA"|"Unknown" ~ as.character("Missing"),
-#                         sex == "Unknown" ~ as.character("Missing"),
-                         TRUE ~ sex))%>%
-  
-  group_by(age_group, sex, medcond_yn) 
-
-
-# what kind of a thing is query1?
-class(query1)
-
-# Generate actual SQL commands: We can either use dbplyr::sql_render() or dplyr::show_query()
-dbplyr::sql_render(query1)
-
-# execute query and retrieve results in a tibble (dataframe). 
-query1_tibble <- query1 %>% 
-  collect() # collect runs the SQL query and returns the output of your dplyr pipe se
-
-query1_tibble
-```
-
-
-```{r}
-# Filter off the missing and unknown datapoints to keep only interested ones and recode the comorbity feature 
-# into desired format to produce the dataset used for plotting
-death_rate_plot <- query1_tibble %>%
-  filter(sex == "Male" | sex == "Female")%>%
-  filter(!age_group == "Missing") %>%
-  filter(medcond_yn == "Yes"| medcond_yn == "No") %>% 
-  summarise(Yes = count(death_yn == "Yes"), total = n()) %>%
-  mutate(rate = Yes / total)%>%
-  mutate(medcond_yn = case_when(medcond_yn == "Yes" ~ as.character("Comorbities"), 
-                                medcond_yn == "No" ~ as.character("No comorbities"), 
-                                TRUE ~ medcond_yn))
-
-```
-
-```{r out.width = "100%"}
-# Create the plot
-ggplot(death_rate_plot, aes(y = age_group, x = rate*100)) +
-  geom_col(fill = 'salmon') +
-  geom_text(aes(label = round(rate*100,digits = 1)),
-            size = 3,
-            nudge_x = 3) +
-  facet_wrap(~ sex + medcond_yn ) +
-  theme_bw()+
-  labs(title = "COVID Death % by Age, Sex and Presence of Comorbities", 
-       x = "Death Rate (%)",
-       y = '') +
-  NULL
-```
-
-
-2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
-
-```{r}
-# Calculate Covid death % 
-# by age group, sex and ICU admission (query2) 
-query2 <-   cdc_data %>%
-  # dplyr commands like 
-  # select, filter, group_by, summarise...
-  filter(current_status == "Laboratory-confirmed case")%>%
-  arrange(death_yn) %>%
-  select(!onset_dt) %>%
-  select(!pos_spec_dt) %>%
-  mutate(icu_yn = case_when(icu_yn == "Unknown" ~ as.character("Missing"), TRUE ~ icu_yn),
-         age_group = case_when(age_group == "NA" ~ as.character("Missing"), TRUE ~ age_group),
-         sex = case_when(sex == "NA" ~ as.character("Missing"), 
-                         sex == "Unknown" ~ as.character("Missing"), 
-                         TRUE ~ sex))%>%
-  group_by(age_group, sex, icu_yn) 
-
-query2
-
-# what kind of a thing is query2?
-class(query2)
-
-# Generate actual SQL commands: We can either use dbplyr::sql_render() or dplyr::show_query()
-dbplyr::sql_render(query2)
-
-# execute query and retrieve results in a tibble (dataframe). 
-query2_tibble <- query2 %>% 
-  collect() # collect runs the SQL query and returns the output of your dplyr pipe se
-
-query2_tibble
-```
-
-
-```{r}
-# Create features similarly to previous section
-death_rate_plot_icu <- query2_tibble %>%
-  summarise(Yes = count(death_yn == "Yes"), total = n()) %>%
-  mutate(rate = Yes / total) %>%
-  filter(sex == "Male"|sex == "Female")%>%
-  filter(!age_group == "Missing") %>%
-  filter(icu_yn == "Yes"|icu_yn == "No") %>% 
-  mutate(icu_yn = case_when(icu_yn == "Yes" ~ as.character("ICU"),
-                            icu_yn == "No" ~ as.character("No ICU"), 
-                            TRUE ~ icu_yn))
-
-```
-
-```{r out.width = "100%"}
-# Create the plot
-ggplot(death_rate_plot_icu, aes(y = age_group, x = rate*100)) +
-  geom_col(fill = 'lightblue') +
-  geom_text(aes(label = round(rate*100,digits = 1)),
-            size = 3,
-            nudge_x = 5) +
-  facet_wrap(~ sex + icu_yn ) +
-  theme_bw()+
-  labs(title = "COVID Death % by Age, Sex and ICU Admission", 
-       x = "Death Rate (%)",
-       y = '') +
-  NULL
 
 ```
 
