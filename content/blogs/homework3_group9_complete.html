@@ -591,16 +591,16 @@ null_dist</code></pre>
 ## # A tibble: 1,000 x 2
 ##    replicate    stat
 ##        &lt;int&gt;   &lt;dbl&gt;
-##  1         1 -0.184 
-##  2         2 -0.403 
-##  3         3  0.714 
-##  4         4 -0.365 
-##  5         5 -0.836 
-##  6         6 -0.0154
-##  7         7  0.546 
-##  8         8 -0.522 
-##  9         9 -0.142 
-## 10        10 -0.108 
+##  1         1 -0.0442
+##  2         2  0.0172
+##  3         3 -0.282 
+##  4         4 -0.315 
+##  5         5  0.0982
+##  6         6  0.0831
+##  7         7 -0.194 
+##  8         8  0.541 
+##  9         9 -0.160 
+## 10        10 -0.115 
 ## # … with 990 more rows</code></pre>
 <p>Here, <code>hypothesize</code> is used to set the null hypothesis as a test for independence, i.e., that there is no difference between the two population means. In one sample cases, the null argument can be set to <em>point</em> to test a hypothesis relative to a point estimate.</p>
 <p>Also, note that the <code>type</code> argument within generate is set to permute, which is the argument when generating a null distribution for a hypothesis test.</p>
@@ -745,18 +745,18 @@ null_dist_2</code></pre>
 ## Explanatory: gender (factor)
 ## Null Hypothesis: independence
 ## # A tibble: 1,000 x 2
-##    replicate   stat
-##        &lt;int&gt;  &lt;dbl&gt;
-##  1         1 -1779.
-##  2         2  2403.
-##  3         3 -4556.
-##  4         4  1957.
-##  5         5 -1738.
-##  6         6   246.
-##  7         7  -440.
-##  8         8 -1242.
-##  9         9  4205.
-## 10        10  2676.
+##    replicate    stat
+##        &lt;int&gt;   &lt;dbl&gt;
+##  1         1  -506. 
+##  2         2 -1779. 
+##  3         3  -349. 
+##  4         4 -2572. 
+##  5         5  1296. 
+##  6         6  -498. 
+##  7         7    31.1
+##  8         8  -308. 
+##  9         9 -1233. 
+## 10        10  1023. 
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code>null_dist_2 %&gt;% visualize()</code></pre>
 <p><img src="/blogs/homework3_group9_complete_files/figure-html/hypothesis_testing-1.png" width="648" style="display: block; margin: auto;" /></p>
@@ -830,18 +830,18 @@ null_dist_3</code></pre>
 ## Explanatory: gender (factor)
 ## Null Hypothesis: independence
 ## # A tibble: 1,000 x 2
-##    replicate    stat
-##        &lt;int&gt;   &lt;dbl&gt;
-##  1         1 -2.84  
-##  2         2  1.96  
-##  3         3 -1.24  
-##  4         4  1.16  
-##  5         5 -1.64  
-##  6         6  0.0417
-##  7         7 -0.439 
-##  8         8  3.57  
-##  9         9  1.00  
-## 10        10 -7.33  
+##    replicate   stat
+##        &lt;int&gt;  &lt;dbl&gt;
+##  1         1  1.32 
+##  2         2  2.85 
+##  3         3  1.72 
+##  4         4  5.41 
+##  5         5 -1.72 
+##  6         6 -0.599
+##  7         7 -2.92 
+##  8         8 -3.88 
+##  9         9  1.72 
+## 10        10  0.603
 ## # … with 990 more rows</code></pre>
 <pre class="r"><code>null_dist_3 %&gt;% visualize()</code></pre>
 <p><img src="/blogs/homework3_group9_complete_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /></p>
@@ -1178,29 +1178,4 @@ wide_GDP_data %&gt;%
 <p>Gross capital formation, which indicates the level of investment slightly decreases over time in Germany, slightly increased in the US, and increased significantly in India especially since 2000. Hence, we can reasonably speculate that India might have gone through a period of rapid development, with households decreasing their consumption, saving more money, and initiating more investments.</p>
 <p>Government expenditure has been stable in Germany and India, but exhibits a decreasing trend for the US, probably due to a tightening government budget and increasing level of debt. It is worth noting that India’s gross capital formation proportion in GDP has always beeen 10-30% above the government expenditure proportion level, while these two components have been competing for Germany and the US, both fluctuating at around 20%.</p>
 <p>Net exports have been stable for India and the US before 2000 and both experienced a decrease of about 5% after then. Germany’s net export proportion level has also been stable until 2000 and experienced an increase afterwards, which suggests that it became more of an exporter than importer than it was before 2000.</p>
-<blockquote>
-<p>If you want to, please change <code>country_list &lt;- c("United States","India", "Germany")</code> to include your own country and compare it with any two other countries you like</p>
-</blockquote>
-</div>
-<div id="deliverables" class="section level1">
-<h1>Deliverables</h1>
-<p>There is a lot of explanatory text, comments, etc. You do not need these, so delete them and produce a stand-alone document that you could share with someone. Knit the edited and completed R Markdown file as an HTML document (use the “Knit” button at the top of the script editor window) and upload it to Canvas.</p>
-</div>
-<div id="details" class="section level1">
-<h1>Details</h1>
-<ul>
-<li>Who did you collaborate with: TYPE NAMES HERE</li>
-<li>Approximately how much time did you spend on this problem set: ANSWER HERE</li>
-<li>What, if anything, gave you the most trouble: ANSWER HERE</li>
-</ul>
-<p><strong>Please seek out help when you need it,</strong> and remember the <a href="https://mam2022.netlify.app/syllabus/#the-15-minute-rule" target="_blank">15-minute rule</a>. You know enough R (and have enough examples of code from class and your readings) to be able to do this. If you get stuck, ask for help from others, post a question on Slack– and remember that I am here to help too!</p>
-<blockquote>
-<p>As a true test to yourself, do you understand the code you submitted and are you able to explain it to someone else?</p>
-</blockquote>
-</div>
-<div id="rubric" class="section level1">
-<h1>Rubric</h1>
-<p>Check minus (1/5): Displays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analyzed.</p>
-<p>Check (3/5): Solid effort. Hits all the elements. No clear mistakes. Easy to follow (both the code and the output).</p>
-<p>Check plus (5/5): Finished all components of the assignment correctly and addressed both challenges. Code is well-documented (both self-documented and with additional comments as necessary). Used tidyverse, instead of base R. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or you’ve written additional text to describe how you interpret the output.</p>
 </div>
